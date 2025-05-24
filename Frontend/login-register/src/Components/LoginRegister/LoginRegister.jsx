@@ -35,7 +35,7 @@ setAction('');
           </div>
          <button type="submit">Login</button>
          <div className="register-link">
-            <p>Don't have an account?<a href="#" onClick={registerLink}>Register</a></p>
+            <p>Don't have an account?<a href="#" onClick={registerLink}> Register</a></p>
          </div>
         </form>
       </div>
@@ -64,7 +64,7 @@ setAction('');
           </div>
          <button type="submit">Register</button>
          <div className="register-link">
-            <p>Already have an account?<a href="#" onClick={loginLink}>Login</a></p>
+            <p>Already have an account?<a href="#" onClick={loginLink}> Login</a></p>
          </div>
         </form>
       </div>
