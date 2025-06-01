@@ -1,0 +1,53 @@
+.enrollment-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.enrollment-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Add scroll wrapper */
+.enrollment-scroll-wrapper {
+  max-height: 400px; /* Adjust height as needed */
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.enrollment-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.enrollment-table th,
+.enrollment-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.enrollment-table thead {
+  background-color: #f9f9f9;
+}
+
+.enrollment-table th {
+  font-weight: 600;
+}
+
+.student-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-name img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
