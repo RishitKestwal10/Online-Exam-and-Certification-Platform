@@ -1,0 +1,55 @@
+.course-exam-container {
+  padding: 40px;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.course-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.course-card {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.course-card h3 {
+  margin: 10px 0 8px;
+  font-size: 18px;
+  color: #1e3a8a;
+}
+
+.course-card p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.course-button {
+  background-color: #ff4500;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.course-button:hover {
+  background-color: #e13b00;
+}
