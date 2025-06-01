@@ -15,7 +15,7 @@ function TodoList() {
     setTask('');
   };
 
-  const handleDelete = (index) => {
+  const handleDelete = (index) => { 
     const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
   };
