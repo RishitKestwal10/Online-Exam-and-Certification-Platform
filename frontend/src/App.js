@@ -8,6 +8,7 @@ import StudentEnrollment from './components/StudentEnrollment';
 import CourseOverview from './components/CourseOverview';
 import CreateExam from './components/CreateExam';
 import CourseExam from './components/CourseExam';
+import MCQForm from './components/MCQForm';
  // ✅ New import
 import './App.css';
 
