@@ -1,0 +1,68 @@
+.mcq-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mcq-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 600;
+}
+
+.mcq-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mcq-form input[type="text"] {
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.mcq-form input[type="text"]:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px #4a90e2;
+}
+
+.mcq-form .row {
+  display: flex;
+  gap: 15px;
+}
+
+.mcq-form .row input[type="text"] {
+  flex: 1;
+}
+
+.mcq-form button[type="submit"] {
+  padding: 14px 20px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.mcq-form button[type="submit"]:hover {
+  background-color: #357ABD;
+}
+
+@media (max-width: 480px) {
+  .mcq-form .row {
+    flex-direction: column;
+  }
+}
