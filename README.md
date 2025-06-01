@@ -4,7 +4,7 @@ Conducting online  exams and issuing certificates manually is a time-consuming p
 
 
 TEAM MEMBERS:
-Manali Joshi
-Rishit Kestwal
-Ojas Joshi
+Manali Joshi,
+Rishit Kestwal,
+Ojas Joshi,
 Divyansh
