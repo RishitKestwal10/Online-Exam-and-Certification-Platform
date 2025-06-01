@@ -1,0 +1,82 @@
+.add-course-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px 20px;
+  background-color: white;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.form-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.course-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.thumbnail-preview {
+  margin-top: 10px;
+  width: 100px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button {
+  background-color: black;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #333;
+}
+
+@media (max-width: 768px) {
+  .form-group-inline {
+    flex-direction: column;
+  }
+}
