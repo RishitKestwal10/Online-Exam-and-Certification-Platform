@@ -1,62 +1,47 @@
+import React, { useState } from 'react';
+import './TodoList.css'; 
 
-import React, { useState } from "react";
-import "./TodoList.css";
+function TodoList() {
+  const [task, setTask] = useState('');
+  const [tasks, setTasks] = useState([
+    'Prepare assignment',
+    'Review exam results',
+    'Update course materials'
+  ]);
 
-const TodoList = () => {
-  const [todos, setTodos] = useState([]);
-  const [input, setInput] = useState("");
-
-  const addTodo = () => {
-    if (input.trim()) {
-      setTodos([...todos, { text: input, completed: false }]);
-      setInput("");
-    }
+  const handleAdd = () => {
+    if (task.trim() === '') return;
+    setTasks([...tasks, task]);
+    setTask('');
   };
 
-  const toggleComplete = (index) => {
-    const updated = [...todos];
-    updated[index].completed = !updated[index].completed;
-    setTodos(updated);
-  };
-
-  const deleteTodo = (index) => {
-    const updated = todos.filter((_, i) => i !== index);
-    setTodos(updated);
+  const handleDelete = (index) => {
+    const newTasks = tasks.filter((_, i) => i !== index);
+    setTasks(newTasks);
   };
 
   return (
-    <div className="todo-card">
-      <h2 className="todo-title">📝 To-Do List</h2>
-      <div className="todo-input-group">
+    <div className="todo-container">
+      <h2>📝 To-Do List</h2>
+      <div className="input-group">
         <input
           type="text"
-          value={input}
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
           placeholder="Add a task..."
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && addTodo()}
-          className="todo-input"
         />
-        <button onClick={addTodo} className="todo-add-button">
-          Add
-        </button>
+        <button onClick={handleAdd}>Add</button>
       </div>
-      <ul className="todo-list">
-        {todos.map((todo, index) => (
-          <li key={index} className="todo-item">
-            <span
-              onClick={() => toggleComplete(index)}
-              className={`todo-text ${todo.completed ? "completed" : ""}`}
-            >
-              {todo.text}
-            </span>
-            <button onClick={() => deleteTodo(index)} className="todo-delete">
-              ✕
-            </button>
+      <ul className="task-list">
+        {tasks.map((t, i) => (
+          <li key={i}>
+            {t}
+            <span onClick={() => handleDelete(i)} className="delete-btn">✖</span>
           </li>
         ))}
       </ul>
     </div>
   );
-};
+}
 
 export default TodoList;

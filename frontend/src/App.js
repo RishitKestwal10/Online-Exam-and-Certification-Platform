@@ -9,7 +9,7 @@ import CourseOverview from './components/CourseOverview';
 import CreateExam from './components/CreateExam';
 import CourseExam from './components/CourseExam';
 import MCQForm from './components/MCQForm';
- // ✅ New import
+import TeacherDashboard from './components/TeacherDashboard';
 import './App.css';
 
 function App() {
@@ -21,13 +21,16 @@ function App() {
           <Navbar />
           <div className="content">
             <Routes>
-              <Route path="/" element={<h1>Welcome to Teacher Dashboard</h1>} />
+              {/* ✅ Render TeacherDashboard on home route */}
+              <Route path="/" element={<TeacherDashboard />} />
+
+              {/* Other routes */}
               <Route path="/courses" element={<CourseOverview />} />
               <Route path="/courses/add" element={<AddCourse />} />
               <Route path="/courses/my" element={<MyCourses />} />
               <Route path="/courses/enrolled" element={<StudentEnrollment />} />
               <Route path="/create_exam" element={<CreateExam />} />
-              <Route path="/course-exam" element={<CourseExam />} /> {/* ✅ New route */}
+              <Route path="/course-exam" element={<CourseExam />} />
               <Route path="/mcqform" element={<MCQForm />} />
             </Routes>
           </div>
