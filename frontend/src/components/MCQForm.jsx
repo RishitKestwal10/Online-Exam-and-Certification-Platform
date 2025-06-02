@@ -97,7 +97,21 @@ const MCQForm = () => {
           onChange={(e) => setAnswer(e.target.value)}
           required
         />
-        <button type="submit">Add Question</button>
+     <div className="button-row">
+  <button type="submit" className="mcq-button blue-button">Add Question</button>
+  <button
+    type="button"
+    className="mcq-button red-button"
+    onClick={() => {
+      alert('Another action button clicked');
+    }}
+  >
+    Submit
+  </button>
+</div>
+
+
+
       </form>
     </div>
   );
