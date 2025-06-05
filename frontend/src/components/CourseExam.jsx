@@ -19,7 +19,7 @@ const CourseExam = () => {
 
   return (
     <div className="course-exam-container">
-      <h2>Select Course to Create MCQ Exam</h2>
+      <h2>Select Subject to Create MCQ Exam</h2>
       <div className="course-card-grid">
         {courses.map((course, index) => (
           <div className="course-card" key={index}>

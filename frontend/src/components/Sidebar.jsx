@@ -15,7 +15,7 @@ import {
 
 const menuItems = [
   { label: 'Dashboard', icon: <FaTachometerAlt />, path: '/' },
-  { label: 'Assignments', icon: <FaClipboardList /> },
+  { label: 'Assignments', icon: <FaClipboardList />, path: '/assignments' },
   { label: 'Schedule', icon: <FaCalendarAlt /> },
   { label: 'Results', icon: <FaFileAlt /> },
   { label: 'Create Exam', icon: <FaPenFancy />, path: '/create_exam' },
