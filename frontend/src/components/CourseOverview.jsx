@@ -6,21 +6,21 @@ const cards = [
   {
     title: 'Add Course',
     description: 'Add new courses to your teaching dashboard.',
-    image: 'https://source.unsplash.com/400x300/?classroom',
+    image: 'images/Add-Courses.webp',
     button: 'Add Now',
     link: '/courses/add'
   },
   {
     title: 'My Courses',
     description: 'View and manage your courses.',
-    image: 'https://source.unsplash.com/400x300/?books',
+    image: 'images/My-Courses.jpg',
     button: 'View Courses',
     link: '/courses/my'
   },
   {
     title: 'Student Enrollment',
     description: 'See who has enrolled in your courses.',
-    image: 'https://source.unsplash.com/400x300/?students',
+    image: 'images/Student-enrollment.webp',
     button: 'Check Enrollment',
     link: '/courses/enrolled'
   }
