@@ -18,7 +18,7 @@ const CreateExam = () => {
           {/* MCQ Exam Card */}
           <div className="exam-card">
             <img
-              src="https://via.placeholder.com/400x180?text=MCQ+Exam"
+              src="images/mcq.jpg"
               alt="MCQ Exam"
             />
             <div className="exam-card-body">
@@ -33,7 +33,7 @@ const CreateExam = () => {
           {/* Coding Exam Card */}
           <div className="exam-card">
             <img
-              src="https://via.placeholder.com/400x180?text=Coding+Exam"
+              src="images/coding-exam.jpeg"
               alt="Coding Exam"
             />
             <div className="exam-card-body">
@@ -50,7 +50,7 @@ const CreateExam = () => {
           {/* New MCQ Exam Card */}
           <div className="exam-card">
             <img
-              src="https://via.placeholder.com/400x180?text=New+MCQ+Exam"
+              src="images/exam-rules.png"
               alt="New MCQ Exam"
             />
             <div className="exam-card-body">
@@ -65,7 +65,7 @@ const CreateExam = () => {
           {/* Existing MCQ Exams Card */}
           <div className="exam-card">
             <img
-              src="https://via.placeholder.com/400x180?text=Existing+MCQ+Exams"
+              src="images/Existing-exam.jpg"
               alt="Existing MCQ Exams"
             />
             <div className="exam-card-body">
