@@ -1,3 +1,5 @@
+/* App.css */
+
 .App {
   display: flex;
   font-family: 'Inter', sans-serif;
@@ -5,16 +7,135 @@
   overflow: hidden;
 }
 
-.content {
-  flex: 1;
-  margin-left: 200px;   /* match sidebar width */
-  margin-top: 70px;     /* match navbar height */
-  padding: 30px;
-  background-color: #f5f6fa;
+/* Sidebar */
+.sidebar {
+  width: 170px;
+  background-color: #7e8184;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+  color: #ecf0f1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #ecf0f1;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+.menu-item .link {
+  color: #ecf0f1;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.menu-item .link:visited {
+  color: #ecf0f1;
+}
+
+.menu-item .link:hover {
+  color: white;
+  border-radius: 5px;
+}
+
+.menu-item .icon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 170px; /* match sidebar width */
+  right: 0;
+  height: 70px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 100;
+}
+
+.search {
+  padding: 8px 15px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 14px;
+  background-color: #f3f4f6;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 18px;
+  color: #2c3e50;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.username {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* Main Layout & Content */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  margin-left: 170px;   /* match sidebar width */
+  margin-top: 70px;     /* match navbar height */
+  padding: 30px;
+  background-color: #f5f6fa;
+  overflow-y: auto;
 }
