@@ -1,0 +1,127 @@
+.exam-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f8ff;
+  min-height: 100vh;
+}
+
+.exam-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.question-card {
+  background: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.option {
+  background: #f1f5ff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccd7ff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.option:hover {
+  background-color: #e0ebff;
+}
+
+.option input {
+  margin-right: 10px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-btn,
+.submit-btn,
+.edit-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.back-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.back-btn:hover {
+  background-color: #0056b3;
+}
+
+.back-btn:disabled {
+  background-color: #dee2e6;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.review-section,
+.result-section {
+  background-color: #ffffff;
+  padding: 30px;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-item {
+  margin-bottom: 15px;
+}
+
+.result {
+  margin-bottom: 15px;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.wrong {
+  color: red;
+  font-weight: bold;
+}
+
+.edit-btn {
+  margin-left: 10px;
+  background-color: #ffc107;
+  color: #000;
+}
