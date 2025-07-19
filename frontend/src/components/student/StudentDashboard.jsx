@@ -1,6 +1,5 @@
 import React from "react";
-import "./StudentDashboard.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaClipboardList,
@@ -13,6 +12,7 @@ import {
   FaPenFancy,
   FaBell,
 } from "react-icons/fa";
+import "./StudentDashboard.css";
 
 import ExamInstructions from "./ExamInstructions";
 import TakeExam from "./TakeExam";
@@ -39,7 +39,22 @@ const menuItems = [
 
 const StudentDashboard = () => {
   const username = localStorage.getItem("username") || "Student";
+  const location = useLocation();
 
+  const isExamMode = location.pathname === "/student-dashboard/take-exam";
+
+  // ❌ Don't render layout for /take-exam route
+  if (isExamMode) {
+    return (
+      <div className="content-only">
+        <Routes>
+          <Route path="take-exam" element={<TakeExam />} />
+        </Routes>
+      </div>
+    );
+  }
+
+  // ✅ Full layout for other pages
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
@@ -87,7 +102,6 @@ const StudentDashboard = () => {
           <Routes>
             <Route path="/" element={<DashboardHome key={window.location.pathname} />} />
             <Route path="exam-instructions" element={<ExamInstructions key={window.location.pathname} />} />
-            <Route path="take-exam" element={<TakeExam key={window.location.pathname} />} />
             <Route path="results" element={<StudentResults key={window.location.pathname} />} />
             {/* Add more routes with keys here if needed */}
           </Routes>

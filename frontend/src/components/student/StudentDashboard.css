@@ -159,3 +159,7 @@ body {
     flex-grow: 1;
   }
 }
+/* Hide layout during exam */
+.content-only {
+  width: 100%;
+}

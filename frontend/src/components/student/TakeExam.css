@@ -1,127 +1,122 @@
+/* Container styles */
 .exam-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f8ff;
-  min-height: 100vh;
+  font-family: sans-serif;
+  padding: 20px;
+  background: #f9f9f9;
 }
 
-.exam-title {
-  font-size: 28px;
-  margin-bottom: 30px;
-  color: #333;
-}
-
-.question-card {
-  background: white;
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.question {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: #444;
-}
-
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-bottom: 25px;
-}
-
-.option {
-  background: #f1f5ff;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid #ccd7ff;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.option:hover {
-  background-color: #e0ebff;
-}
-
-.option input {
-  margin-right: 10px;
-}
-
-.button-group {
+/* Header */
+.exam-header {
   display: flex;
   justify-content: space-between;
+  font-weight: bold;
+  background: #1e3a8a;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
 }
 
-.back-btn,
-.submit-btn,
-.edit-btn {
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
+/* Layout */
+.exam-body {
+  display: flex;
+  margin-top: 20px;
+}
+
+/* Grid */
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 40px);
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.question-number {
+  background-color: #ccc;
+  text-align: center;
+  padding: 10px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  border-radius: 4px;
 }
 
-.back-btn {
-  background-color: #007bff;
+.question-number.answered {
+  background-color: #4caf50; /* green */
+}
+
+.question-number.review {
+  background-color: #9b59b6; /* purple */
+}
+
+.question-number.active {
+  border: 2px solid #000;
+}
+
+/* Panel */
+.question-panel {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.options label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.nav-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+/* Button Styles */
+button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Previous button - outlined blue */
+.prev-btn {
+  border: 2px solid #1e3a8a;
+  background-color: transparent;
+  color: #1e3a8a;
+}
+.prev-btn:hover {
+  background-color: #1e3a8a;
   color: white;
 }
 
-.back-btn:hover {
-  background-color: #0056b3;
+/* Next button - green */
+.next-btn {
+  background-color: #4caf50;
+  color: white;
+}
+.next-btn:hover {
+  background-color: #43a047;
 }
 
-.back-btn:disabled {
-  background-color: #dee2e6;
-  cursor: not-allowed;
+/* Mark for Review - orange */
+.review-btn {
+  background-color: #ff9800;
+  color: white;
 }
+.review-btn:hover {
+  background-color: #fb8c00;
+}
+
+
 
 .submit-btn {
-  background-color: #007bff;
+  background-color: #1e3a8a;
   color: white;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-.review-section,
-.result-section {
-  background-color: #ffffff;
-  padding: 30px;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.review-item {
-  margin-bottom: 15px;
-}
-
-.result {
-  margin-bottom: 15px;
-}
-
-.correct {
-  color: green;
+  border: none;
+  padding: 10px 20px;
   font-weight: bold;
-}
-
-.wrong {
-  color: red;
-  font-weight: bold;
-}
-
-.edit-btn {
-  margin-left: 10px;
-  background-color: #ffc107;
-  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
 }

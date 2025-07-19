@@ -1,135 +1,151 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./TakeExam.css";
 
 const questions = [
   {
-    id: 1,
     question: "What is the capital of France?",
-    options: ["Berlin", "Madrid", "Paris", "Rome"],
-    correct: "Paris",
+    options: { A: "Berlin", B: "Madrid", C: "Paris", D: "Rome" },
+    correctAnswer: "C",
   },
   {
-    id: 2,
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Mars", "Jupiter", "Venus"],
-    correct: "Mars",
+    question: "Which language runs in a web browser?",
+    options: { A: "Java", B: "C", C: "Python", D: "JavaScript" },
+    correctAnswer: "D",
   },
   {
-    id: 3,
-    question: "What is the largest ocean on Earth?",
-    options: ["Atlantic", "Indian", "Arctic", "Pacific"],
-    correct: "Pacific",
+    question: "What is 2 + 2?",
+    options: { A: "3", B: "4", C: "5", D: "6" },
+    correctAnswer: "B",
   },
 ];
-
+// ... import section remains the same ...
 const TakeExam = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [reviewMode, setReviewMode] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [reviewFlags, setReviewFlags] = useState({});
+  const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes
 
-  const currentQuestion = questions[currentIndex];
+  // Submit Handler
+  const handleSubmit = useCallback(() => {
+    console.log("Submitted Answers:", answers);
+    alert("✅ Exam submitted successfully!");
+  }, [answers]);
 
-  const handleOptionChange = (option) => {
-    setAnswers({ ...answers, [currentQuestion.id]: option });
+  // ⏱ Timer
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          alert("⏰ Time is up!");
+          handleSubmit();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [handleSubmit]);
+
+  // 🚫 Student Protection
+  useEffect(() => {
+    const disableContext = (e) => e.preventDefault();
+    const disableShortcuts = (e) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && (e.key === "u" || e.key === "U")) ||
+        (e.ctrlKey && e.shiftKey && ["I", "i", "J", "j", "C", "c"].includes(e.key))
+      ) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("contextmenu", disableContext);
+    document.addEventListener("keydown", disableShortcuts);
+    return () => {
+      document.removeEventListener("contextmenu", disableContext);
+      document.removeEventListener("keydown", disableShortcuts);
+    };
+  }, []);
+
+  const formatTime = (seconds) => {
+    const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+    const secs = String(seconds % 60).padStart(2, "0");
+    return `${mins}:${secs}`;
   };
 
-  const handleNext = () => {
-    if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setReviewMode(true);
-    }
+  const handleOptionSelect = (option) => {
+    setAnswers((prev) => ({
+      ...prev,
+      [currentQuestion]: option,
+    }));
   };
 
-  const handleBack = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
+  const handleQuestionClick = (index) => setCurrentQuestion(index);
+
+  const goToNext = () => currentQuestion < questions.length - 1 && setCurrentQuestion(currentQuestion + 1);
+  const goToPrevious = () => currentQuestion > 0 && setCurrentQuestion(currentQuestion - 1);
+
+  const toggleReview = () => {
+    setReviewFlags((prev) => ({
+      ...prev,
+      [currentQuestion]: !prev[currentQuestion],
+    }));
   };
 
-  const handleSubmit = () => {
-    setReviewMode(false);
-    setSubmitted(true);
-  };
-
-  const handleEditAnswer = (index) => {
-    setReviewMode(false);
-    setCurrentIndex(index);
-  };
+  const currentQ = questions[currentQuestion];
 
   return (
     <div className="exam-container">
-      <h2 className="exam-title">Course Exam</h2>
+      <div className="exam-header">
+        <span>👩 Student: John Doe</span>
+        <span>📝 Exam: Java Fundamentals</span>
+        <span>⏱ Timer: {formatTime(timeLeft)}</span>
+        <span>🆔 Exam ID: JF101</span>
+      </div>
 
-      {submitted ? (
-        <div className="result-section">
-          <h3>Results:</h3>
-          {questions.map((q, index) => (
-            <div key={q.id} className="result">
-              <strong>Q{index + 1}:</strong> {q.question}
-              <br />
-              Your answer:{" "}
-              <span className={answers[q.id] === q.correct ? "correct" : "wrong"}>
-                {answers[q.id] || "Not Answered"}
-              </span>
-              {" | "}
-              Correct answer: {q.correct}
+      <div className="exam-body">
+        {/* Grid of questions */}
+        <div className="question-grid">
+          {questions.map((_, index) => (
+            <div
+              key={index}
+              className={`question-number 
+                ${answers[index] ? "answered" : ""} 
+                ${reviewFlags[index] ? "review" : ""}
+                ${index === currentQuestion ? "active" : ""}`}
+              onClick={() => handleQuestionClick(index)}
+            >
+              {index + 1}
             </div>
           ))}
         </div>
-      ) : reviewMode ? (
-        <div className="review-section">
-          <h3>Review Your Answers</h3>
-          {questions.map((q, index) => (
-            <div key={q.id} className="review-item">
-              <strong>Q{index + 1}:</strong> {q.question}
-              <br />
-              Answer: <em>{answers[q.id] || "Not Answered"}</em>
-              <button className="edit-btn" onClick={() => handleEditAnswer(index)}>
-                Edit
-              </button>
-            </div>
-          ))}
-          <button className="submit-btn" onClick={handleSubmit}>
-            Submit Exam
-          </button>
-        </div>
-      ) : (
-        <div className="question-card">
-          <p className="question">
-            Q{currentIndex + 1}. {currentQuestion.question}
-          </p>
+
+        {/* Question View */}
+        <div className="question-panel">
+          <h3>Q{currentQuestion + 1}: {currentQ.question}</h3>
           <div className="options">
-            {currentQuestion.options.map((opt, i) => (
-              <label key={i} className="option">
+            {Object.entries(currentQ.options).map(([key, value]) => (
+              <label key={key}>
                 <input
                   type="radio"
-                  name={`question-${currentQuestion.id}`}
-                  value={opt}
-                  checked={answers[currentQuestion.id] === opt}
-                  onChange={() => handleOptionChange(opt)}
+                  name={`option-${currentQuestion}`}
+                  value={key}
+                  checked={answers[currentQuestion] === key}
+                  onChange={() => handleOptionSelect(key)}
                 />
-                {opt}
+                {key}. {value}
               </label>
             ))}
           </div>
 
-          <div className="button-group">
-            <button
-              className="back-btn"
-              onClick={handleBack}
-              disabled={currentIndex === 0}
-            >
-              Back
-            </button>
-
-            <button className="submit-btn" onClick={handleNext}>
-              {currentIndex === questions.length - 1 ? "Review Answers" : "Next"}
-            </button>
+          <div className="nav-row">
+            <button onClick={goToPrevious} disabled={currentQuestion === 0}>⬅️ Previous</button>
+            <button onClick={goToNext} disabled={currentQuestion === questions.length - 1}>➡️ Next</button>
+            <button onClick={toggleReview}> Mark for Review</button>
+            <button className="submit-btn" onClick={handleSubmit}> Submit</button>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
