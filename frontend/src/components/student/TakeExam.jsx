@@ -18,20 +18,18 @@ const questions = [
     correctAnswer: "B",
   },
 ];
-// ... import section remains the same ...
+
 const TakeExam = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [reviewFlags, setReviewFlags] = useState({});
   const [timeLeft, setTimeLeft] = useState(60 * 60); // 60 minutes
 
-  // Submit Handler
   const handleSubmit = useCallback(() => {
     console.log("Submitted Answers:", answers);
     alert("✅ Exam submitted successfully!");
   }, [answers]);
 
-  // ⏱ Timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -47,7 +45,6 @@ const TakeExam = () => {
     return () => clearInterval(timer);
   }, [handleSubmit]);
 
-  // 🚫 Student Protection
   useEffect(() => {
     const disableContext = (e) => e.preventDefault();
     const disableShortcuts = (e) => {
@@ -81,10 +78,8 @@ const TakeExam = () => {
   };
 
   const handleQuestionClick = (index) => setCurrentQuestion(index);
-
   const goToNext = () => currentQuestion < questions.length - 1 && setCurrentQuestion(currentQuestion + 1);
   const goToPrevious = () => currentQuestion > 0 && setCurrentQuestion(currentQuestion - 1);
-
   const toggleReview = () => {
     setReviewFlags((prev) => ({
       ...prev,
@@ -95,58 +90,63 @@ const TakeExam = () => {
   const currentQ = questions[currentQuestion];
 
   return (
-    <div className="exam-container">
-      <div className="exam-header">
-        <span>👩 Student: John Doe</span>
-        <span>📝 Exam: Java Fundamentals</span>
-        <span>⏱ Timer: {formatTime(timeLeft)}</span>
-        <span>🆔 Exam ID: JF101</span>
+    <>
+  {/* Top Bar */}
+  <div className="exam-header">
+    <span>👤 Student: John Doe</span>
+    <span> Exam: Java Fundamentals</span>
+    <span> ID: JF101</span>
+    <span>⏱ {formatTime(timeLeft)}</span>
+  </div>
+
+  <div className="exam-wrapper">
+    <div className="left-panel">
+      <h3>Q{currentQuestion + 1}: {currentQ.question}</h3>
+      <div className="options">
+        {Object.entries(currentQ.options).map(([key, value]) => (
+          <label key={key}>
+            <input
+              type="radio"
+              name={`option-${currentQuestion}`}
+              value={key}
+              checked={answers[currentQuestion] === key}
+              onChange={() => handleOptionSelect(key)}
+            />
+            {key}. {value}
+          </label>
+        ))}
       </div>
 
-      <div className="exam-body">
-        {/* Grid of questions */}
-        <div className="question-grid">
-          {questions.map((_, index) => (
-            <div
-              key={index}
-              className={`question-number 
-                ${answers[index] ? "answered" : ""} 
-                ${reviewFlags[index] ? "review" : ""}
-                ${index === currentQuestion ? "active" : ""}`}
-              onClick={() => handleQuestionClick(index)}
-            >
-              {index + 1}
-            </div>
-          ))}
-        </div>
-
-        {/* Question View */}
-        <div className="question-panel">
-          <h3>Q{currentQuestion + 1}: {currentQ.question}</h3>
-          <div className="options">
-            {Object.entries(currentQ.options).map(([key, value]) => (
-              <label key={key}>
-                <input
-                  type="radio"
-                  name={`option-${currentQuestion}`}
-                  value={key}
-                  checked={answers[currentQuestion] === key}
-                  onChange={() => handleOptionSelect(key)}
-                />
-                {key}. {value}
-              </label>
-            ))}
-          </div>
-
-          <div className="nav-row">
-            <button onClick={goToPrevious} disabled={currentQuestion === 0}>⬅️ Previous</button>
-            <button onClick={goToNext} disabled={currentQuestion === questions.length - 1}>➡️ Next</button>
-            <button onClick={toggleReview}> Mark for Review</button>
-            <button className="submit-btn" onClick={handleSubmit}> Submit</button>
-          </div>
-        </div>
+      <div className="nav-row">
+        <button className="prev-btn" onClick={goToPrevious} disabled={currentQuestion === 0}>Previous</button>
+        <button className="next-btn" onClick={goToNext} disabled={currentQuestion === questions.length - 1}>Next</button>
+        <button className="review-btn" onClick={toggleReview}>Mark for Review</button>
+        <button className="submit-btn" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
+
+    <div className="right-panel">
+      <div className="question-grid">
+        {questions.map((_, index) => (
+          <div
+            key={index}
+            className={`question-number ${answers[index] ? "answered" : ""} ${reviewFlags[index] ? "review" : ""} ${index === currentQuestion ? "active" : ""}`}
+            onClick={() => handleQuestionClick(index)}
+          >
+            {index + 1}
+          </div>
+        ))}
+      </div>
+
+      <div className="legend">
+        <div><span className="legend-box answered" /> Answered</div>
+        <div><span className="legend-box review" /> Marked for Review</div>
+        <div><span className="legend-box not-answered" /> Not Answered</div>
+      </div>
+    </div>
+  </div>
+</>
+
   );
 };
 
