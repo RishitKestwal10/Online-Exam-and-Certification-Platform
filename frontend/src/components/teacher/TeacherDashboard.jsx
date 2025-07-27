@@ -1,6 +1,6 @@
 import React from "react";
 import "./TeacherDashboard.css";
-import { Routes, Route, Link,useNavigate } from "react-router-dom";
+import { Routes, Route, NavLink,useNavigate } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaClipboardList,
@@ -79,14 +79,15 @@ const DashboardHome = () => {
 const menuItems = [
   { label: "Dashboard", icon: <FaTachometerAlt />, path: "" },
   { label: "Assignments", icon: <FaClipboardList />, path: "assignments" },
-  { label: "Schedule", icon: <FaCalendarAlt />, path: "schedule" },
-  { label: "Results", icon: <FaFileAlt />, path: "results" },
+  //{ label: "Schedule", icon: <FaCalendarAlt />, path: "schedule" },
   { label: "Create Exam", icon: <FaPenFancy />, path: "create_exam" },
-  { label: "Discussions", icon: <FaComments />, path: "discussions" },
-  { label: "Resources", icon: <FaBook />, path: "resources" },
-  { label: "Notes", icon: <FaStickyNote />, path: "notes" },
+  { label: "Results", icon: <FaFileAlt />, path: "results" },
+  
+ // { label: "Discussions", icon: <FaComments />, path: "discussions" },
+  //{ label: "Resources", icon: <FaBook />, path: "resources" },
+ // { label: "Notes", icon: <FaStickyNote />, path: "notes" },
   { label: "Courses", icon: <FaBook />, path: "courses" },
-  { label: "Settings", icon: <FaCog />, path: "settings" },
+ // { label: "Settings", icon: <FaCog />, path: "settings" },
 ];
 
 const TeacherDashboard = () => {
@@ -106,17 +107,19 @@ const navigate = useNavigate();
           {menuItems.map((item, index) => (
             <li key={index} className="menu-item">
               {item.path !== undefined ? (
-                <Link
-                  to={
-                    item.path === ""
-                      ? "/teacher-dashboard"
-                      : `/teacher-dashboard/${item.path}`
-                  }
-                  className="link"
-                >
-                  <span className="icon">{item.icon}</span>
-                  <span className="label">{item.label}</span>
-                </Link>
+   <NavLink
+  to={
+    item.path === ""
+      ? "/teacher-dashboard"
+      : `/teacher-dashboard/${item.path}`
+  }
+  end={item.path === ""} // exact match only for dashboard
+  className={({ isActive }) => `link ${isActive ? 'active' : ''}`}
+>
+  <span className="icon">{item.icon}</span>
+  <span className="label">{item.label}</span>
+</NavLink>
+
               ) : (
                 <div className="link no-link">
                   <span className="icon">{item.icon}</span>

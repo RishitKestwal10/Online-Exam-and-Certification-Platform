@@ -313,3 +313,17 @@ body {
   background-color: #fbbc04;
   color: #333;
 }
+
+.menu-item .link.active {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  font-weight: 600;
+}
+
+.menu-item .link.active .icon {
+  color: #1a73e8;
+}
+
+.menu-item .link.active .label {
+  color: #1a73e8;
+}
