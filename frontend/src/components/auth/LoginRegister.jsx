@@ -83,16 +83,28 @@ const LoginRegister = () => {
               <FaUser className="icon" />
             </div>
             <div className="input-box">
-              <input type="password" name="password" placeholder="Password" required />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
               <FaLock className="icon" />
             </div>
             <div className="remember-forget">
-              <label><input type="checkbox" /> Remember me</label>
+              <label>
+                <input type="checkbox" /> Remember me
+              </label>
               <a href="#">Forget password?</a>
             </div>
             <button type="submit">Login</button>
             <div className="register-link">
-              <p>Don't have an account? <a href="#" onClick={registerLink}>Register</a></p>
+              <p>
+                Don't have an account?{" "}
+                <a href="#" onClick={registerLink}>
+                  Register
+                </a>
+              </p>
             </div>
           </form>
         </div>
@@ -110,15 +122,27 @@ const LoginRegister = () => {
               <FaEnvelope className="icon" />
             </div>
             <div className="input-box">
-              <input type="password" name="password" placeholder="Password" required />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
               <FaLock className="icon" />
             </div>
             <div className="remember-forget">
-              <label><input type="checkbox" /> I agree to the terms</label>
+              <label>
+                <input type="checkbox" /> I agree to the terms
+              </label>
             </div>
             <button type="submit">Register</button>
             <div className="register-link">
-              <p>Already have an account? <a href="#" onClick={loginLink}>Login</a></p>
+              <p>
+                Already have an account?{" "}
+                <a href="#" onClick={loginLink}>
+                  Login
+                </a>
+              </p>
             </div>
           </form>
         </div>

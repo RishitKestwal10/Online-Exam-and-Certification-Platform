@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import './AddCourse.css';
 
 const AddCourse = () => {
@@ -77,7 +78,7 @@ const AddCourse = () => {
 
           <div className="form-group">
             <label>Course Thumbnail</label>
-            <input type="file" accept="image/*" onChange={handleThumbnailUpload} />
+            <input type="file" accept="image/" onChange={handleThumbnailUpload} />
             {preview && (
               <img src={preview} alt="Course Thumbnail" className="thumbnail-preview" />
             )}

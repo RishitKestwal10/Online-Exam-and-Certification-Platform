@@ -1,6 +1,6 @@
 import React from "react";
 import "./TeacherDashboard.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link,useNavigate } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaClipboardList,
@@ -24,14 +24,57 @@ import MCQExamForm from "./MCQExamForm";
 import AddAssignment from "./AddAssignment";
 import TodoList from "./TodoList";
 import TeacherResults from "./TeacherResults";
-const DashboardHome = () => (
-  <div className="content">
-    <h2>Welcome to the Teacher Dashboard</h2>
-    <div className="dashboard-section">
-      <TodoList />
+
+const DashboardHome = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="content">
+      {/* Welcome Section */}
+      <div className="welcome-banner">
+        <h2>Welcome back, Teacher 👋</h2>
+        <p>Manage your courses, track student progress, and create engaging exams.</p>
+        <button className="create-btn" onClick={() => navigate("/teacher-dashboard/courses/add")}>
+          + Create New Course
+        </button>
+      </div>
+
+      {/* Dashboard Metrics */}
+      <div className="dashboard-widgets">
+        <div className="widget-box">
+          <h3>Total Courses</h3>
+          <p>5</p>
+        </div>
+        <div className="widget-box">
+          <h3>Active Students</h3>
+          <p>128</p>
+        </div>
+        <div className="widget-box">
+          <h3>Exams Created</h3>
+          <p>12</p>
+        </div>
+        <div className="widget-box">
+          <h3>Certificates Issued</h3>
+          <p>36</p>
+        </div>
+      </div>
+
+      {/* Quick Actions */}
+      <div className="quick-actions">
+        <h3>Quick Actions</h3>
+        <button className="quick-btn blue" onClick={() => navigate("/teacher-dashboard/create_exam/mcq-exam-form")}>
+          + Create MCQ Exam
+        </button>
+        <button className="quick-btn green" onClick={() => navigate("/teacher-dashboard/create_exam")}>
+          + Create Coding Exam
+        </button>
+        <button className="quick-btn yellow" onClick={() => navigate("/teacher-dashboard/courses/add")}>
+          + Create Course
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const menuItems = [
   { label: "Dashboard", icon: <FaTachometerAlt />, path: "" },
@@ -48,13 +91,18 @@ const menuItems = [
 
 const TeacherDashboard = () => {
   const username = localStorage.getItem("username") || "Teacher";
-
+const navigate = useNavigate();
   return (
     <div className="dashboard-container">
       {/* Sidebar */}
       <div className="sidebar">
-        <h2>Teacher</h2>
+        <div className="sidebar-logo">
+   <img src="/images/Examplus.png" alt="ExamPlus Logo" className="sidebar-logo-img" />
+  <span className="sidebar-app-name">ExamPlus</span>
+</div>
+
         <ul className="menu">
+          
           {menuItems.map((item, index) => (
             <li key={index} className="menu-item">
               {item.path !== undefined ? (
@@ -82,14 +130,31 @@ const TeacherDashboard = () => {
 
       {/* Main Layout */}
       <div className="main-content">
-        <div className="navbar">
-          <input type="text" placeholder="Search..." className="search" />
-          <div className="right">
-            <FaBell className="icon" />
-            <img src="https://via.placeholder.com/40" alt="Profile" className="avatar" />
-            <span className="username">{username}</span>
-          </div>
-        </div>
+       <div className="topbar">
+  <div className="topbar-left">
+    <h2 className="app-name"></h2>
+  </div>
+  <div className="topbar-right">
+    <FaBell className="icon" />
+    <img src="https://via.placeholder.com/40" alt="Profile" className="avatar" />
+    <span className="username">{username}</span>
+<button
+  className="logout-btn"
+  onClick={() => {
+    const confirmed = window.confirm("Are you sure you want to logout?");
+    if (confirmed) {
+      localStorage.clear(); // Clear session
+      navigate("/loginregister"); // Go to login/register
+    }
+  }}
+>
+  Logout
+</button>
+
+
+  </div>
+</div>
+
 
         {/* Routing Content */}
         <div className="content">
@@ -104,6 +169,7 @@ const TeacherDashboard = () => {
             <Route path="create_exam/mcq-exam-form" element={<MCQExamForm key={window.location.pathname} />} />
             <Route path="mcq-form" element={<MCQForm key={window.location.pathname} />} />
              <Route path="results" element={<TeacherResults key={window.location.pathname}/>} />
+             
           </Routes>
         </div>
       </div>

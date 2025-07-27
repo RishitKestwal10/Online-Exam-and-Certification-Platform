@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<LoginRegister />} />
         <Route path="/student-dashboard/*" element={<StudentDashboard />} />
         <Route path="/teacher-dashboard/*" element={<TeacherDashboard />} />
+        <Route path="/loginregister" element={<LoginRegister />} />
       </Routes>
     </Router>
   );
