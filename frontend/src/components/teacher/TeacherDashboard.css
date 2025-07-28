@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f7fa;
   color: #333;
 }
@@ -48,13 +48,12 @@ body {
   color: #2c3e50;
 }
 .teacher-account-btn {
-  background-color:#1e40af; 
+  background-color: #1e40af;
   color: #eef4ff;
   font-weight: 600;
   padding: 10px 15px;
   text-align: center;
   border-radius: 20px;
-  margin-bottom: 20px;
 }
 
 .teacher-menu {
@@ -147,7 +146,8 @@ body {
 .teacher-content {
   flex: 1;
   padding: 30px;
-  overflow-y: auto; /* optional if content may overflow */
+  margin-top: 0px;
+  overflow-y: auto;
 }
 
 .teacher-welcome-banner {
@@ -156,7 +156,6 @@ body {
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
-
   color: white;
 }
 
@@ -221,11 +220,10 @@ body {
   background-color: #fff;
   padding: 25px 30px;
   margin-top: 30px;
-  margin-bottom: 30px; /* Add this */
+  margin-bottom: 30px;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
-
 
 .teacher-quick-actions h3 {
   font-size: 18px;
@@ -244,9 +242,16 @@ body {
   color: white;
   cursor: pointer;
 }
+.teacher-quick-btn:last-child {
+  margin-bottom: 0;
+}
 
-.teacher-quick-btn.blue { background-color: #4285f4; }
-.teacher-quick-btn.green { background-color: #34a853; }
+.teacher-quick-btn.blue {
+  background-color: #4285f4;
+}
+.teacher-quick-btn.green {
+  background-color: #34a853;
+}
 .teacher-quick-btn.yellow {
   background-color: #fbbc04;
   color: #333;
