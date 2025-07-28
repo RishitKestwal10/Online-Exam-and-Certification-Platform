@@ -23,11 +23,12 @@ body {
 /* === Updated Sidebar Styles === */
 .sidebar {
   width: 220px;
-  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.05);
   background-color: #ffffff;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
+  box-shadow: none; /* remove old shadow if any */
+  border-right: 1px solid #e0e0e0; /* light right border */
 }
 
 .sidebar h2 {
@@ -120,7 +121,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
- box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  border-bottom: 1px solid #e0e0e0; /* light bottom border */
+  box-shadow: none; /* optional: remove old shadow */
 }
 
 .topbar-left .app-name {
@@ -276,31 +278,54 @@ body {
   color: #1a73e8;
 }
 .quick-actions {
-  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
   padding: 25px 30px;
   margin-top: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
 }
 
 .quick-actions h3 {
   font-size: 18px;
   color: #2c3e50;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+
+.quick-btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+
+
+
+.quick-btn-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
 }
 
 .quick-btn {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
+  padding: 14px;
+  height: 48px;
   border: none;
   border-radius: 8px;
   font-size: 15px;
   font-weight: 500;
   color: white;
   cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Colors */
 .quick-btn.blue {
   background-color: #4285f4;
 }
@@ -313,6 +338,7 @@ body {
   background-color: #fbbc04;
   color: #333;
 }
+
 
 .menu-item .link.active {
   background-color: #e8f0fe;

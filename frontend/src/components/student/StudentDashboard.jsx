@@ -1,5 +1,7 @@
 import React from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import {
   FaTachometerAlt,
   FaClipboardList,
@@ -10,17 +12,48 @@ import {
   FaCog,
   FaFileAlt,
   FaPenFancy,
-  FaBell,
 } from "react-icons/fa";
 import "./StudentDashboard.css";
+
 
 import ExamInstructions from "./ExamInstructions";
 import TakeExam from "./TakeExam";
 import StudentResults from "./StudentResults";
 
+// Dashboard content
 const DashboardHome = () => (
-  <div className="content">
-    <h2>Welcome to the Student Dashboard</h2>
+  <div className="dashboard-welcome">
+    <div className="welcome-banner">
+      <h2>Welcome back, Demo!</h2>
+      <p>Continue your learning journey and track your progress.</p>
+      <div className="progress-box">
+        <span>0%</span>
+        <p>Overall Progress</p>
+      </div>
+    </div>
+
+    <div className="stats-grid">
+      <div className="stat-box">
+        <span>📘</span>
+        <p>Enrolled Courses</p>
+        <strong>0</strong>
+      </div>
+      <div className="stat-box">
+        <span>✅</span>
+        <p>Completed Exams</p>
+        <strong>0</strong>
+      </div>
+      <div className="stat-box">
+        <span>🏷️</span>
+        <p>Certificates Earned</p>
+        <strong>0</strong>
+      </div>
+      <div className="stat-box">
+        <span>⏰</span>
+        <p>Study Hours</p>
+        <strong>0h</strong>
+      </div>
+    </div>
   </div>
 );
 
@@ -38,12 +71,12 @@ const menuItems = [
 ];
 
 const StudentDashboard = () => {
-  const username = localStorage.getItem("username") || "Student";
+  const username = localStorage.getItem("username") || "Demo";
   const location = useLocation();
+  const navigate = useNavigate();
 
   const isExamMode = location.pathname === "/student-dashboard/take-exam";
 
-  // ❌ Don't render layout for /take-exam route
   if (isExamMode) {
     return (
       <div className="content-only">
@@ -54,56 +87,73 @@ const StudentDashboard = () => {
     );
   }
 
-  // ✅ Full layout for other pages
   return (
     <div className="dashboard-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h2>Student</h2>
-        <ul className="menu">
-          {menuItems.map((item, index) => (
-            <li key={index} className="menu-item">
-              {item.path !== undefined ? (
-                <Link
-                  to={
-                    item.path === ""
-                      ? "/student-dashboard"
-                      : `/student-dashboard/${item.path}`
-                  }
-                  className="link"
-                >
-                  <span className="icon">{item.icon}</span>
-                  <span className="label">{item.label}</span>
-                </Link>
-              ) : (
-                <div className="link no-link">
-                  <span className="icon">{item.icon}</span>
-                  <span className="label">{item.label}</span>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
+      {/* Topbar */}
+      <div className="topbar">
+        <div className="brand">
+        
+
+          <span className="title">EduCert</span>
+        </div>
+        <div className="user-section">
+          <span className="circle-avatar">D</span>
+          <span className="username">{username}</span>
+          <button
+  className="logout"
+  onClick={() => {
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+    if (confirmLogout) {
+      localStorage.clear(); // or removeItem("username");
+      navigate("/login");
+    }
+  }}
+>
+  Logout
+</button>
+
+
+
+        </div>
       </div>
 
-      {/* Main Layout */}
-      <div className="main-content">
-        <div className="navbar">
-          <input type="text" placeholder="Search..." className="search" />
-          <div className="right">
-            <FaBell className="icon" />
-            <img src="https://via.placeholder.com/40" alt="Profile" className="avatar" />
-            <span className="username">{username}</span>
-          </div>
+      {/* Layout below topbar */}
+      <div className="layout-body">
+        {/* Sidebar */}
+        <div className="sidebar">
+          <div className="account-btn">Student Account</div>
+          <ul className="menu">
+            {menuItems.map((item, index) => (
+              <li key={index} className="menu-item">
+                {item.path !== undefined ? (
+                  <Link
+                    to={
+                      item.path === ""
+                        ? "/student-dashboard"
+                        : `/student-dashboard/${item.path}`
+                    }
+                    className="link"
+                  >
+                    <span className="icon">{item.icon}</span>
+                    <span className="label">{item.label}</span>
+                  </Link>
+                ) : (
+                  <div className="link no-link">
+                    <span className="icon">{item.icon}</span>
+                    <span className="label">{item.label}</span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* Routing Content */}
-        <div className="content">
+        {/* Main content */}
+        <div className="main-content">
           <Routes>
             <Route path="/" element={<DashboardHome key={window.location.pathname} />} />
             <Route path="exam-instructions" element={<ExamInstructions key={window.location.pathname} />} />
             <Route path="results" element={<StudentResults key={window.location.pathname} />} />
-            {/* Add more routes with keys here if needed */}
           </Routes>
         </div>
       </div>
