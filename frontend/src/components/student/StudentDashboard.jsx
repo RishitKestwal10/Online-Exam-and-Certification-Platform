@@ -60,14 +60,15 @@ const DashboardHome = () => (
 const menuItems = [
   { label: "Dashboard", icon: <FaTachometerAlt />, path: "" },
   { label: "Assignments", icon: <FaClipboardList />, path: "assignments" },
-  { label: "Schedule", icon: <FaCalendarAlt />, path: "schedule" },
-  { label: "Results", icon: <FaFileAlt />, path: "results" },
-  { label: "Exam", icon: <FaPenFancy />, path: "exam-instructions" },
-  { label: "Discussions", icon: <FaComments />, path: "discussions" },
-  { label: "Resources", icon: <FaBook />, path: "resources" },
-  { label: "Notes", icon: <FaStickyNote />, path: "notes" },
+ // { label: "Schedule", icon: <FaCalendarAlt />, path: "schedule" },
+ { label: "Exam", icon: <FaPenFancy />, path: "exam-instructions" }, 
+ { label: "Results", icon: <FaFileAlt />, path: "results" },
+  
+  //{ label: "Discussions", icon: <FaComments />, path: "discussions" },
+  //{ label: "Resources", icon: <FaBook />, path: "resources" },
+  //{ label: "Notes", icon: <FaStickyNote />, path: "notes" },
   { label: "Courses", icon: <FaBook />, path: "courses" },
-  { label: "Settings", icon: <FaCog />, path: "settings" },
+  //{ label: "Settings", icon: <FaCog />, path: "settings" },
 ];
 
 const StudentDashboard = () => {
@@ -94,7 +95,7 @@ const StudentDashboard = () => {
         <div className="brand">
         
 
-          <span className="title">EduCert</span>
+          <span className="title">Examify</span>
         </div>
         <div className="user-section">
           <span className="circle-avatar">D</span>

@@ -18,8 +18,10 @@ body {
   align-items: center;
   background-color: white;
   padding: 15px 25px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #e0e0e0; /* Thicker and visible */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Optional shadow */
 }
+
 
 .brand {
   display: flex;
@@ -81,16 +83,18 @@ body {
 .sidebar {
   width: 220px;
   background-color: #ffffff;
-  border-right: 1px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0; /* Add visible border */
   padding: 25px 15px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  height: 100%;
 }
 
+
 .account-btn {
-  background-color: #eef4ff;
-  color: #1e40af;
+  background-color:#1e40af; 
+  color: #eef4ff;
   font-weight: 600;
   padding: 10px 15px;
   text-align: center;
@@ -128,7 +132,9 @@ body {
   flex: 1;
   padding: 30px;
   overflow-y: auto;
+  border-left: 1px solid #f0f0f0;
 }
+
 
 /* ===== Welcome Banner ===== */
 .dashboard-welcome .welcome-banner {
