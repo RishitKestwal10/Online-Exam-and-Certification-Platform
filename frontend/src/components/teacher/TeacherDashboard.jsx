@@ -68,6 +68,7 @@ const TeacherDashboard = () => {
           <img src="/images/Examplus.png" alt="ExamPlus Logo" className="teacher-sidebar-logo-img" />
           <span className="teacher-sidebar-app-name">ExamPlus</span>
         </div>
+        <div className="teacher-account-btn">Teacher Account</div>
         <ul className="teacher-menu">
           {menuItems.map((item, index) => (
             <li key={index} className="teacher-menu-item">
@@ -85,6 +86,7 @@ const TeacherDashboard = () => {
       </div>
 
       <div className="teacher-main-content">
+        {/* Topbar */}
         <div className="teacher-topbar">
           <div className="teacher-topbar-left"></div>
           <div className="teacher-topbar-right">
