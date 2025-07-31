@@ -12,13 +12,13 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "Rishit@123", // update this if needed
-  database: "project"
+  database: "project",
 });
 
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
   const plainPassword = password;
-  const role = "student"; // default role
+  const role = "admin"; // default role
 
   db.query(
     "INSERT INTO User (name, email, password, role) VALUES (?, ?, ?, ?)",

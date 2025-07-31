@@ -39,9 +39,8 @@ const CreateExam = () => {
             <div className="exam-card-body">
               <h3>Coding Exam</h3>
               <p>Design and evaluate coding challenges.</p>
-              <Link to="/coding-exam" className="btn">
-                Coding
-              </Link>
+             <Link to="coding-exam" className="btn">Coding</Link>
+
             </div>
           </div>
         </div>
