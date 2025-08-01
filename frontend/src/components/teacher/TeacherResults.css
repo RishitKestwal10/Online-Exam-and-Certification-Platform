@@ -19,7 +19,61 @@
   border: 1px solid #ddd;
   padding: 12px;
   text-align: left;
+}.results-page {
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6fb;
+  min-height: 100vh;
+  color: #1e3a8a;
 }
+
+.results-page h2 {
+  color: #1e3a8a;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.05em;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 6px 20px rgba(30, 58, 138, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.results-table th,
+.results-table td {
+  padding: 14px 18px;
+  text-align: left;
+}
+
+.results-table th {
+  background-color: #1e3a8a;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+}
+
+.results-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.results-table tbody tr:hover {
+  background-color: #dbe7fd;
+  cursor: default;
+}
+
+.results-table td {
+  font-size: 15px;
+  color: #2a3b62;
+}
+
 
 .results-table th {
   background-color: #1e3a8a;

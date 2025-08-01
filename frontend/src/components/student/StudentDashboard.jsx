@@ -1,30 +1,24 @@
 import React from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useLocation, useNavigate } from "react-router-dom";
 
 import {
   FaTachometerAlt,
   FaClipboardList,
-  FaCalendarAlt,
-  FaComments,
-  FaBook,
-  FaStickyNote,
-  FaCog,
-  FaFileAlt,
   FaPenFancy,
+  FaFileAlt,
+  FaBook,
 } from "react-icons/fa";
 import "./StudentDashboard.css";
-
 
 import ExamInstructions from "./ExamInstructions";
 import TakeExam from "./TakeExam";
 import StudentResults from "./StudentResults";
 
 // Dashboard content
-const DashboardHome = () => (
+const DashboardHome = ({ username }) => (
   <div className="dashboard-welcome">
     <div className="welcome-banner">
-      <h2>Welcome back, Demo!</h2>
+      <h2>Welcome back, {username}!</h2>
       <p>Continue your learning journey and track your progress.</p>
       <div className="progress-box">
         <span>0%</span>
@@ -60,15 +54,9 @@ const DashboardHome = () => (
 const menuItems = [
   { label: "Dashboard", icon: <FaTachometerAlt />, path: "" },
   { label: "Assignments", icon: <FaClipboardList />, path: "assignments" },
- // { label: "Schedule", icon: <FaCalendarAlt />, path: "schedule" },
- { label: "Exam", icon: <FaPenFancy />, path: "exam-instructions" }, 
- { label: "Results", icon: <FaFileAlt />, path: "results" },
-  
-  //{ label: "Discussions", icon: <FaComments />, path: "discussions" },
-  //{ label: "Resources", icon: <FaBook />, path: "resources" },
-  //{ label: "Notes", icon: <FaStickyNote />, path: "notes" },
+  { label: "Exam", icon: <FaPenFancy />, path: "exam-instructions" }, 
+  { label: "Results", icon: <FaFileAlt />, path: "results" },
   { label: "Courses", icon: <FaBook />, path: "courses" },
-  //{ label: "Settings", icon: <FaCog />, path: "settings" },
 ];
 
 const StudentDashboard = () => {
@@ -93,28 +81,22 @@ const StudentDashboard = () => {
       {/* Topbar */}
       <div className="topbar">
         <div className="brand">
-        
-
           <span className="title">Examify</span>
         </div>
         <div className="user-section">
-          <span className="circle-avatar">D</span>
+          <span className="circle-avatar">{username.charAt(0).toUpperCase()}</span>
           <span className="username">{username}</span>
           <button
-  className="logout"
-  onClick={() => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-    if (confirmLogout) {
-      localStorage.clear(); // or removeItem("username");
-      navigate("/login");
-    }
-  }}
->
-  Logout
-</button>
-
-
-
+            className="logout"
+            onClick={() => {
+              if (window.confirm("Are you sure you want to logout?")) {
+                localStorage.clear();
+                navigate("/login");
+              }
+            }}
+          >
+            Logout
+          </button>
         </div>
       </div>
 
@@ -152,7 +134,7 @@ const StudentDashboard = () => {
         {/* Main content */}
         <div className="main-content">
           <Routes>
-            <Route path="/" element={<DashboardHome key={window.location.pathname} />} />
+            <Route path="/" element={<DashboardHome username={username} key={window.location.pathname} />} />
             <Route path="exam-instructions" element={<ExamInstructions key={window.location.pathname} />} />
             <Route path="results" element={<StudentResults key={window.location.pathname} />} />
           </Routes>

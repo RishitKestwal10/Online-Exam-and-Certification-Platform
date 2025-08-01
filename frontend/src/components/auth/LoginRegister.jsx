@@ -24,6 +24,7 @@ const LoginRegister = () => {
       console.log("Login response:", data);
 
       if (res.ok) {
+        localStorage.setItem("username", data.name || "User");
         if (data.role === "admin") {
           navigate("/teacher-dashboard");
         } else if (data.role === "student") {

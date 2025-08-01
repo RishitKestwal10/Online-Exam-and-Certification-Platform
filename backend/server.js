@@ -12,7 +12,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "Rishit@123", // update this if needed
-  database: "project",
+  database: "cdac_project",
 });
 
 app.post("/register", (req, res) => {
@@ -45,7 +45,8 @@ app.post("/login", (req, res) => {
       return res.status(401).json({ message: "Invalid credentials." });
     }
 
-    res.json({ role: user.role });
+    res.json({ role: user.role, name: user.name });
+
   });
 });
 

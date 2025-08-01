@@ -145,14 +145,16 @@ body {
   border: 2px solid #fff;
   pointer-events: none;
 }
-.teacher-avatar {
-  width: 32px;
+.teacher-circle-avatar {
+   width: 32px;
   height: 32px;
   border-radius: 50%;
   background-color: #ddd;
-  border: 2px solid #665fe3;
-  box-shadow: 0 0 0 0 #fff;
-  transition: box-shadow 0.18s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #2c3e50;
 }
 .teacher-avatar:hover {
   box-shadow: 0 0 0 4px #e8e6ff;
@@ -318,3 +320,4 @@ body {
   .teacher-sidebar      { padding: 16px 8px;}
   .teacher-quick-actions{ padding: 16px 10px;}
 }
+

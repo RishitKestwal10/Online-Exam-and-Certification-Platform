@@ -2,15 +2,17 @@ import React from "react";
 import "./TeacherDashboard.css";
 import { Routes, Route, NavLink, useNavigate } from "react-router-dom";
 import {
+  FaBookOpen,
+  FaUserGraduate,
+  FaClipboardCheck,
+  FaCertificate,
   FaTachometerAlt,
   FaClipboardList,
   FaBook,
   FaFileAlt,
   FaPenFancy,
   FaBell,
-  FaUserGraduate,
-  FaCertificate,
-  FaRegClipboard
+  FaRegClipboard,
 } from "react-icons/fa";
 
 // Import your other pages/components
@@ -26,22 +28,25 @@ import TodoList from "./TodoList";
 import TeacherResults from "./TeacherResults";
 import CodingForm from "./CodingForm";
 
-const DashboardHome = () => {
+const DashboardHome = ({ username }) => {
   const navigate = useNavigate();
 
   return (
     <div className="teacher-content">
       <div className="teacher-welcome-banner">
-        <h2>Welcome back, Teacher 👋</h2>
+        <h2>Welcome back, {username} 👋</h2>
         <p>Manage your courses, track student progress, and create engaging exams.</p>
-        <button className="teacher-create-btn" onClick={() => navigate("/teacher-dashboard/courses/add")}>
+        <button
+          className="teacher-create-btn"
+          onClick={() => navigate("/teacher-dashboard/courses/add")}
+        >
           + Create New Course
         </button>
       </div>
 
       <div className="teacher-dashboard-widgets">
         <div className="teacher-widget-box widget-courses">
-          <FaBook className="widget-icon" />
+          <FaBookOpen className="widget-icon" />
           <h3>Total Courses</h3>
           <p>5</p>
         </div>
@@ -51,7 +56,7 @@ const DashboardHome = () => {
           <p>128</p>
         </div>
         <div className="teacher-widget-box widget-exams">
-          <FaRegClipboard className="widget-icon" />
+          <FaClipboardCheck className="widget-icon" />
           <h3>Exams Created</h3>
           <p>12</p>
         </div>
@@ -65,13 +70,24 @@ const DashboardHome = () => {
       <div className="teacher-quick-actions">
         <h3>Quick Actions</h3>
         <div className="quick-actions-grid">
-          <button className="teacher-quick-btn blue" onClick={() => navigate("/teacher-dashboard/create_exam/mcq-exam-form")}>
+          <button
+            className="teacher-quick-btn blue"
+            onClick={() =>
+              navigate("/teacher-dashboard/create_exam/mcq-exam-form")
+            }
+          >
             <FaRegClipboard /> Create MCQ Exam
           </button>
-          <button className="teacher-quick-btn green" onClick={() => navigate("/teacher-dashboard/create_exam/coding-exam")}>
+          <button
+            className="teacher-quick-btn green"
+            onClick={() => navigate("/teacher-dashboard/create_exam/coding-exam")}
+          >
             <FaPenFancy /> Create Coding Exam
           </button>
-          <button className="teacher-quick-btn yellow" onClick={() => navigate("/teacher-dashboard/courses/add")}>
+          <button
+            className="teacher-quick-btn yellow"
+            onClick={() => navigate("/teacher-dashboard/courses/add")}
+          >
             <FaBook /> Create Course
           </button>
         </div>
@@ -89,14 +105,18 @@ const menuItems = [
 ];
 
 const TeacherDashboard = () => {
-  const username = localStorage.getItem("username") || "Teacher";
+  const username = localStorage.getItem("username") || "User";
   const navigate = useNavigate();
 
   return (
     <div className="teacher-dashboard-container">
       <div className="teacher-sidebar">
         <div className="teacher-sidebar-logo">
-          <img src="/images/Examplus.png" alt="ExamPlus Logo" className="teacher-sidebar-logo-img" />
+          <img
+            src="/images/Examplus.png"
+            alt="ExamPlus Logo"
+            className="teacher-sidebar-logo-img"
+          />
           <span className="teacher-sidebar-app-name">ExamPlus</span>
         </div>
         <div className="teacher-account-btn">Teacher Account</div>
@@ -121,30 +141,36 @@ const TeacherDashboard = () => {
         {/* Topbar */}
         <div className="teacher-topbar">
           <div className="teacher-topbar-left"></div>
-          <div className="teacher-topbar-right">
-            <div className="notification-bell" title="Notifications">
-              <FaBell className="teacher-icon" />
-              <span className="notify-dot"></span>
-            </div>
-            <img src="https://via.placeholder.com/40" alt="Profile" className="teacher-avatar" />
-            <span className="teacher-username">{username}</span>
-            <button
-              className="teacher-logout-btn"
-              onClick={() => {
-                if (window.confirm("Are you sure you want to logout?")) {
-                  localStorage.clear();
-                  navigate("/loginregister");
-                }
-              }}
-            >
-              Logout
-            </button>
-          </div>
+        <div className="teacher-topbar-right">
+  <div className="notification-bell" title="Notifications">
+    <FaBell className="teacher-icon" />
+    <span className="notify-dot"></span>
+  </div>
+  
+  {/* Circle avatar with initials instead of img */}
+  <span className="teacher-circle-avatar">
+    {username.charAt(0).toUpperCase()}
+  </span>
+  
+  <span className="teacher-username">{username}</span>
+  <button
+    className="teacher-logout-btn"
+    onClick={() => {
+      if (window.confirm("Are you sure you want to logout?")) {
+        localStorage.clear();
+        navigate("/loginregister");
+      }
+    }}
+  >
+    Logout
+  </button>
+</div>
+
         </div>
 
         <div className="teacher-content">
           <Routes>
-            <Route path="/" element={<DashboardHome />} />
+            <Route path="/" element={<DashboardHome username={username} />} />
             <Route path="assignments" element={<AddAssignment />} />
             <Route path="courses" element={<CourseOverview />} />
             <Route path="courses/add" element={<AddCourse />} />
