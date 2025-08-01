@@ -24,15 +24,17 @@ const LoginRegister = () => {
       console.log("Login response:", data);
 
       if (res.ok) {
-        localStorage.setItem("username", data.name || "User");
-        if (data.role === "admin") {
-          navigate("/teacher-dashboard");
-        } else if (data.role === "student") {
-          navigate("/student-dashboard");
-        } else {
-          alert("Unknown role.");
-        }
-      } else {
+            localStorage.setItem("username", data.name || "User");
+  localStorage.setItem("student_id", data.student_id); // ✅ Store student ID
+
+  if (data.role === "admin") {
+    navigate("/teacher-dashboard");
+  } else if (data.role === "student") {
+    navigate("/student-dashboard");
+  } else {
+    alert("Unknown role.");
+  }
+}else {
         alert(data.message || "Invalid credentials");
       }
     } catch (err) {

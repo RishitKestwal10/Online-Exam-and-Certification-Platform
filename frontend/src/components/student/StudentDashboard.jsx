@@ -13,6 +13,7 @@ import "./StudentDashboard.css";
 import ExamInstructions from "./ExamInstructions";
 import TakeExam from "./TakeExam";
 import StudentResults from "./StudentResults";
+import ProblemEditor from "./ProblemEditor";
 
 // Dashboard content
 const DashboardHome = ({ username }) => (
@@ -54,7 +55,7 @@ const DashboardHome = ({ username }) => (
 const menuItems = [
   { label: "Dashboard", icon: <FaTachometerAlt />, path: "" },
   { label: "Assignments", icon: <FaClipboardList />, path: "assignments" },
-  { label: "Exam", icon: <FaPenFancy />, path: "exam-instructions" }, 
+  { label: "Exam", icon: <FaPenFancy />, path: "exam-instructions" },
   { label: "Results", icon: <FaFileAlt />, path: "results" },
   { label: "Courses", icon: <FaBook />, path: "courses" },
 ];
@@ -64,6 +65,7 @@ const StudentDashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isProblemEditor = location.pathname.includes("/solve/");
   const isExamMode = location.pathname === "/student-dashboard/take-exam";
 
   if (isExamMode) {
@@ -77,38 +79,39 @@ const StudentDashboard = () => {
   }
 
   return (
-    <div className="dashboard-container">
-      {/* Topbar */}
-      <div className="topbar">
-        <div className="brand">
-          <span className="title">Examify</span>
+    <div className={`dashboard-container ${isProblemEditor ? "full-screen" : ""}`}>
+      {/* Topbar (hidden in ProblemEditor) */}
+      {!isProblemEditor && (
+        <div className="topbar">
+          <div className="brand">
+            <span className="title">Examify</span>
+          </div>
+          <div className="user-section">
+            <span className="circle-avatar">{username.charAt(0).toUpperCase()}</span>
+            <span className="username">{username}</span>
+            <button
+              className="logout"
+              onClick={() => {
+                if (window.confirm("Are you sure you want to logout?")) {
+                  localStorage.clear();
+                  navigate("/login");
+                }
+              }}
+            >
+              Logout
+            </button>
+          </div>
         </div>
-        <div className="user-section">
-          <span className="circle-avatar">{username.charAt(0).toUpperCase()}</span>
-          <span className="username">{username}</span>
-          <button
-            className="logout"
-            onClick={() => {
-              if (window.confirm("Are you sure you want to logout?")) {
-                localStorage.clear();
-                navigate("/login");
-              }
-            }}
-          >
-            Logout
-          </button>
-        </div>
-      </div>
+      )}
 
-      {/* Layout below topbar */}
       <div className="layout-body">
-        {/* Sidebar */}
-        <div className="sidebar">
-          <div className="account-btn">Student Account</div>
-          <ul className="menu">
-            {menuItems.map((item, index) => (
-              <li key={index} className="menu-item">
-                {item.path !== undefined ? (
+        {/* Sidebar (hidden in ProblemEditor) */}
+        {!isProblemEditor && (
+          <div className="sidebar">
+            <div className="account-btn">Student Account</div>
+            <ul className="menu">
+              {menuItems.map((item, index) => (
+                <li key={index} className="menu-item">
                   <Link
                     to={
                       item.path === ""
@@ -120,23 +123,19 @@ const StudentDashboard = () => {
                     <span className="icon">{item.icon}</span>
                     <span className="label">{item.label}</span>
                   </Link>
-                ) : (
-                  <div className="link no-link">
-                    <span className="icon">{item.icon}</span>
-                    <span className="label">{item.label}</span>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-        {/* Main content */}
+        {/* Main Content Area */}
         <div className="main-content">
           <Routes>
-            <Route path="/" element={<DashboardHome username={username} key={window.location.pathname} />} />
-            <Route path="exam-instructions" element={<ExamInstructions key={window.location.pathname} />} />
-            <Route path="results" element={<StudentResults key={window.location.pathname} />} />
+            <Route path="/" element={<DashboardHome username={username} />} />
+            <Route path="exam-instructions" element={<ExamInstructions />} />
+            <Route path="solve/:id" element={<ProblemEditor />} />
+            <Route path="results" element={<StudentResults />} />
           </Routes>
         </div>
       </div>

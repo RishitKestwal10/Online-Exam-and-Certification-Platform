@@ -1,0 +1,107 @@
+
+/* === ProblemEditor.css === */
+
+.editor-split-wrapper {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Left side: Problem Description */
+.editor-left {
+  flex: 1;
+  padding: 30px;
+  background: #ffffff;
+  overflow-y: auto;
+  border-right: 1px solid #e0e0e0;
+}
+
+.editor-left h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.editor-left p {
+  font-size: 16px;
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.test-case-group {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+.test-case {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dfe6e9;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Right side: Code Editor */
+.editor-right {
+  flex: 1;
+  padding: 30px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.editor-right label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.editor-right select,
+.editor-right textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-family: monospace;
+  background-color: #ffffff;
+}
+
+.editor-right button {
+  width: 150px;
+  padding: 10px;
+  background-color: #2e86de;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  align-self: flex-start;
+}
+
+.editor-right button:hover {
+  background-color: #2168c1;
+}
+
+.output-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.output-box {
+  background-color: #1e272e;
+  color: #d2dae2;
+  padding: 15px;
+  border-radius: 6px;
+  white-space: pre-wrap;
+  font-size: 14px;
+  font-family: monospace;
+  margin-top: 10px;
+  height: 200px;
+  overflow-y: auto;
+}

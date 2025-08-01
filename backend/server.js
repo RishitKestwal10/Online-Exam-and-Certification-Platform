@@ -1,24 +1,40 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
+const dotenv = require("dotenv");
+const bcrypt = require("bcrypt");
+
+const examRoutes = require("./routes/exam");
+const problemsRoutes = require("./routes/problem");
+const submissionsRoutes = require("./routes/submission");
+
+dotenv.config();
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-app.use(cors());
+// Database connection
+const db = require("./utils/db");
+
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Rishit@123", // update this if needed
-  database: "cdac_project",
+// Inject DB into every request
+app.use((req, res, next) => {
+  req.db = db;
+  next();
 });
 
+// Routes
+app.use("/api/exams", examRoutes);
+app.use("/api/problems", problemsRoutes);
+app.use("/api/submissions", submissionsRoutes);
+
+// Registration Route
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
   const plainPassword = password;
-  const role = "admin"; // default role
+  const role = "student";  // Default role set to student
 
   db.query(
     "INSERT INTO User (name, email, password, role) VALUES (?, ?, ?, ?)",
@@ -30,6 +46,7 @@ app.post("/register", (req, res) => {
   );
 });
 
+// Login Route
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   console.log("Login attempt:", email);
@@ -45,11 +62,17 @@ app.post("/login", (req, res) => {
       return res.status(401).json({ message: "Invalid credentials." });
     }
 
-    res.json({ role: user.role, name: user.name });
-
+    // ✅ Correct key name: student_id (not userId)
+    res.json({ role: user.role, name: user.name, student_id: user.user_id });
   });
 });
 
+// Catch-all route for unmatched paths
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+// Start server
 app.listen(port, () => {
   console.log(`✅ Server running on http://localhost:${port}`);
 });
