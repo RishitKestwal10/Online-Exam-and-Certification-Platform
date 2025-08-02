@@ -34,7 +34,7 @@ app.use("/api/submissions", submissionsRoutes);
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
   const plainPassword = password;
-  const role = "student";  // Default role set to student
+  const role = "admin";  // Default role set to admin (teacher)
 
   db.query(
     "INSERT INTO User (name, email, password, role) VALUES (?, ?, ?, ?)",
