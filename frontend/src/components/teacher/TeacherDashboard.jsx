@@ -117,7 +117,7 @@ const TeacherDashboard = () => {
             alt="ExamPlus Logo"
             className="teacher-sidebar-logo-img"
           />
-          <span className="teacher-sidebar-app-name">ExamPlus</span>
+          <span className="teacher-sidebar-app-name">Examify</span>
         </div>
         <div className="teacher-account-btn">Teacher Account</div>
         <ul className="teacher-menu">
