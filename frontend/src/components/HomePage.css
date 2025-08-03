@@ -1,0 +1,308 @@
+.homepage-container {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  background: #f8f9fa;
+}
+
+/* ================= Navbar ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #6590e6;
+  padding: 1rem 2rem;
+  color: #fff;
+/* position: sticky;
+  top: 0;
+  z-index: 10; */
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-btn {
+  background: #6590e6;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  border: 2px solid #6590e6;
+  transition: background 0.3s, color 0.3s;
+}
+
+.nav-btn:hover {
+  background: #fff;
+  color: #3c96f7e6;
+}
+
+/* ================= Hero Section ================= */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 3rem 2rem;
+  background: #e6f2ec;
+}
+
+.hero-text {
+  max-width: 50%;
+  padding-right: 1rem;
+}
+
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: #6590e6;
+  color: #fff;
+  border: 2px solid #6590e6;
+}
+
+.btn-primary:hover {
+  background: #3c96f7e6;
+  border-color: #0f5e36;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: #6590e6;
+  border: 2px solid #6590e6;
+}
+
+.btn-secondary:hover {
+  background: #3c96f7e6;
+  color: #fff;
+}
+
+.hero-image img {
+  max-width: 450px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 1.5rem;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .hero-text {
+    max-width: 100%;
+    text-align: center;
+    padding-right: 0;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-image img {
+    margin-top: 2rem;
+  }
+}
+
+/* ================= Sections ================= */
+.overview-section,
+.features-section,
+.contact-section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.features-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: #6590e6;
+  margin-bottom: 1rem;
+}
+
+/* ================= Roadmap Section ================= */
+.roadmap-section {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  text-align: center;
+  overflow: hidden;
+}
+
+.roadmap-slider {
+  overflow: hidden;
+  width: 100%;
+}
+
+.roadmap-track {
+  display: flex;
+  animation: scrollRoadmap 30s linear infinite;
+}
+
+.roadmap-card {
+  min-width: 280px;
+  flex: 0 0 auto;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-5px);
+}
+
+.roadmap-card h4 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.roadmap-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+@keyframes scrollRoadmap {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ================= Carousel (One Image at a Time) ================= */
+.carousel-section {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.carousel-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slide {
+  display: flex;
+  
+  transition: transform 1s ease-in-out;
+  animation: slideImages 9s infinite;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover; /* Fill the container without distortion */
+  flex-shrink: 0;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .carousel-slide img {
+    height: 250px;
+  }
+}
+
+@keyframes slideImages {
+  0%, 33.33% {
+    transform: translateX(0%);
+  }
+  44.44%, 66.66% {
+    transform: translateX(-100%);
+  }
+  77.77%, 100% {
+    transform: translateX(-200%);
+  }
+}
+
+
+
+@keyframes continuousSlide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%); /* Slide halfway due to duplicated images */
+  }
+}
+
+/* ================= Footer ================= */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background: #6590e6;
+  color: #fff;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #6590e6;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.scroll-to-top:hover {
+  background-color: #3c96f7e6;
+  transform: scale(1.1);
+}

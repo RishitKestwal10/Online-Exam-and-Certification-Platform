@@ -1,11 +1,13 @@
 .login-page {
-  background: url('/public/images/background.jpg') no-repeat center center;
+  background: url('/public/images/login-background.jpg') no-repeat center center;
   background-size: cover;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Align to left */
   align-items: center;
+  padding-left: 5%; /* Optional: add spacing from left edge */
 }
+
 
 
 .wrapper {
