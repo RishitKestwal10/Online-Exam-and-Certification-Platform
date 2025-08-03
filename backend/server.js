@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const examRoutes = require("./routes/exam");
 const problemsRoutes = require("./routes/problem");
 const submissionsRoutes = require("./routes/submission");
+const certificateRoutes = require("./routes/certificate");  // ✅ Added certificate route
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 app.use("/api/exams", examRoutes);
 app.use("/api/problems", problemsRoutes);
 app.use("/api/submissions", submissionsRoutes);
+app.use("/api/certificate", certificateRoutes);  // ✅ Use certificate route
 
 // Registration Route
 app.post("/register", (req, res) => {

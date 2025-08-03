@@ -1,49 +1,91 @@
-.certificate {
-  width: 1000px;
-  margin: 40px auto;
-  padding: 40px;
-  border: 10px solid #4caf50;
-  border-radius: 10px;
-  background-color: #fff;
+.certificate-container {
+  width: 800px;
+  margin: 48px auto;
+  padding: 48px 40px;
+  border: 6px solid #bfa046; /* gold frame */
+  border-radius: 16px;
+  background: linear-gradient(115deg, #0d1836 70%, #e9e9e9 100%);
+  font-family: "Georgia", serif;
+  box-shadow: 0 8px 36px rgba(23, 34, 62, 0.13);
+  color: #fff;
+  position: relative;
+}
+
+.certificate-header {
   text-align: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-bottom: 42px;
 }
 
 .certificate-logo {
-  height: 120px;
-  margin-bottom: 20px;
+  width: 128px;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 1px 8px #bfa04677);
 }
 
 .certificate-title {
-  font-size: 36px;
+  margin: 0;
+  font-size: 2.7rem;
+  color: #ffe066;
+  letter-spacing: 1.6px;
   font-weight: bold;
-  margin-bottom: 20px;
+  text-shadow: 0 2px 8px #2d3e5077;
+}
+
+.certificate-body {
+  text-align: center;
+  margin-bottom: 38px;
 }
 
 .certificate-text {
-  font-size: 20px;
-  margin: 10px 0;
+  font-size: 1.25rem;
+  color: #e9e1cc;
 }
 
-.certificate-name {
-  font-size: 28px;
-  color: #1a237e;
+.certificate-student {
+  margin: 14px 0;
+  font-size: 2.3rem;
+  color: #fff;
   font-weight: bold;
-  margin: 10px 0;
+  letter-spacing: 1.2px;
+  text-shadow: 0 1px 6px #0d183655;
 }
 
 .certificate-exam {
-  font-size: 26px;
-  color: #2e7d32;
+  margin: 14px 0;
+  font-size: 1.5rem;
+  color: #ffe066;
   font-weight: bold;
-  margin: 10px 0;
 }
 
-.certificate-signature-box {
-  margin-top: 60px;
+.certificate-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  font-size: 1.07rem;
+  color: #ffe066;
+  font-family: "Source Code Pro", monospace;
 }
 
-.certificate-signature-img {
-  height: 80px;
-  margin-bottom: 5px;
+.certificate-signature {
+  text-align: right;
+  margin-top: 56px;
+}
+
+.signature-line {
+  border-top: 2px solid #d6bc53;
+  width: 220px;
+  margin-left: auto;
+  padding-top: 10px;
+}
+
+.signature-name {
+  font-size: 1.01rem;
+  color: #ffe066;
+  font-weight: 500;
+}
+
+.signature-label {
+  font-size: 0.92rem;
+  color: #e9e9e9cc;
+  letter-spacing: 1px;
 }

@@ -1,17 +1,22 @@
 import React from "react";
 import "./StudentResults.css";
+import { useNavigate } from "react-router-dom";
 
 const StudentResults = () => {
+  const navigate = useNavigate();
+
+  // Replace with real results from backend
   const results = [
-    { subject: "Java", marks: 85, status: "Pass" },
-    { subject: "Spring Boot", marks: 65, status: "Pass" },
-    { subject: "ReactJS", marks: 45, status: "Fail" },
+    { subject: "Java", marks: 85, status: "Pass", examId: 1 },
+    { subject: "Spring Boot", marks: 65, status: "Pass", examId: 2 },
+    { subject: "ReactJS", marks: 45, status: "Fail", examId: 3 },
   ];
 
-  const handleDownload = (subject) => {
-    // Replace this logic with actual certificate generation/download
-    alert(`Downloading certificate for ${subject}`);
-    // Example: window.open(`/certificates/${subject}.pdf`, "_blank");
+  const studentId = 1; // Replace with real logged-in student's ID
+
+  const handleViewCertificate = (examId) => {
+    // Navigate to the certificate page with studentId and examId
+    navigate(`/certificate/${studentId}/${examId}`);
   };
 
   return (
@@ -38,9 +43,9 @@ const StudentResults = () => {
                 {result.status === "Pass" ? (
                   <button
                     className="download-btn"
-                    onClick={() => handleDownload(result.subject)}
+                    onClick={() => handleViewCertificate(result.examId)}
                   >
-                    Download
+                    View Certificate
                   </button>
                 ) : (
                   "-"
