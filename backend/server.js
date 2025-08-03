@@ -36,7 +36,7 @@ app.use("/api/certificate", certificateRoutes);  // ✅ Use certificate route
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
   const plainPassword = password;
-  const role = "admin";  // Default role set to admin (teacher)
+  const role = "admin";  // Default role set to student
 
   db.query(
     "INSERT INTO User (name, email, password, role) VALUES (?, ?, ?, ?)",
