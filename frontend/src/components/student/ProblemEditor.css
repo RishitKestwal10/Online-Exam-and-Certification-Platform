@@ -1,107 +1,131 @@
-
-/* === ProblemEditor.css === */
-
-.editor-split-wrapper {
+.editor-container {
   display: flex;
-  height: 100vh;
-  background-color: #f4f7fa;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* Left side: Problem Description */
-.editor-left {
-  flex: 1;
-  padding: 30px;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
   background: #ffffff;
-  overflow-y: auto;
-  border-right: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-.editor-left h2 {
+/* Left: Question Panel */
+.question-panel {
+  flex: 1;
+  padding-right: 10px;
+  border-right: 1px solid #dfe6e9;
+}
+
+.question-panel h2 {
   font-size: 22px;
   margin-bottom: 10px;
-  color: #2c3e50;
+  color: #2d3436;
 }
 
-.editor-left p {
-  font-size: 16px;
-  margin: 8px 0;
+.question-panel p {
+  font-size: 15px;
   line-height: 1.6;
-}
-
-.test-case-group {
-  margin-top: 20px;
-  background: #f9f9f9;
-  padding: 12px;
-  border-radius: 6px;
-}
-
-.test-case {
-  padding: 10px;
+  color: #444;
   margin-bottom: 10px;
-  border: 1px solid #dfe6e9;
-  border-radius: 4px;
-  background-color: #fff;
 }
 
-/* Right side: Code Editor */
-.editor-right {
-  flex: 1;
-  padding: 30px;
-  background: #fafafa;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
+/* Right: Editor Panel */
+.editor-panel {
+  flex: 1.2;
+  padding-left: 10px;
 }
 
-.editor-right label {
-  margin: 10px 0 5px;
-  font-weight: bold;
+.editor-panel h3 {
+  font-size: 18px;
+  color: #d63031;
+  margin-bottom: 12px;
+  text-align: right;
 }
 
-.editor-right select,
-.editor-right textarea {
+textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   font-size: 14px;
-  border: 1px solid #ccc;
+  font-family: 'Fira Code', monospace;
+  border: 1px solid #ced6e0;
+  border-radius: 8px;
+  background: #f9f9f9;
+  resize: vertical;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+textarea:focus {
+  background: #ffffff;
+  border-color: #0984e3;
+  outline: none;
+}
+
+select {
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 14px;
   border-radius: 6px;
-  margin-bottom: 15px;
-  font-family: monospace;
+  border: 1px solid #b2bec3;
   background-color: #ffffff;
 }
 
-.editor-right button {
-  width: 150px;
-  padding: 10px;
-  background-color: #2e86de;
-  color: white;
-  font-weight: bold;
+button {
+  padding: 10px 16px;
+  font-size: 14px;
   border: none;
   border-radius: 6px;
+  margin-right: 10px;
+  background-color: #0984e3;
+  color: white;
   cursor: pointer;
-  margin-bottom: 15px;
-  align-self: flex-start;
+  transition: background 0.3s ease;
 }
 
-.editor-right button:hover {
-  background-color: #2168c1;
-}
-
-.output-title {
-  font-weight: bold;
-  margin-top: 10px;
+button:hover {
+  background-color: #74b9ff;
 }
 
 .output-box {
-  background-color: #1e272e;
-  color: #d2dae2;
-  padding: 15px;
+  margin-top: 15px;
+  background: #f1f2f6;
+  padding: 12px;
   border-radius: 6px;
-  white-space: pre-wrap;
-  font-size: 14px;
-  font-family: monospace;
-  margin-top: 10px;
-  height: 200px;
-  overflow-y: auto;
+  border-left: 4px solid #0984e3;
+}
+
+@media screen and (max-width: 768px) {
+  .editor-container {
+    flex-direction: column;
+  }
+  .question-panel, .editor-panel {
+    padding: 0;
+    border: none;
+  }
+  .editor-panel h3 {
+    text-align: left;
+  }
+}
+
+.test-cases {
+  margin-top: 15px;
+  padding: 10px;
+  background: #f1f2f6;
+  border-radius: 6px;
+  border-left: 4px solid #0984e3;
+}
+
+.test-cases ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.test-cases li {
+  margin-bottom: 10px;
+  background: #ffffff;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #dfe6e9;
 }
