@@ -6,5 +6,4 @@ Developed a web-based system for conducting and managing online exams with secur
 TEAM MEMBERS:
 Manali Joshi,
 Rishit Kestwal,
-Ojas Joshi,
-Divyansh
+Ojas Joshi
